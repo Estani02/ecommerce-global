@@ -6,6 +6,7 @@ export interface Product {
   imagen: string;
   fav?: boolean;
   rating: number;
+  opinionesTotal: number;
   categoria: string;
   marca: string;
 }

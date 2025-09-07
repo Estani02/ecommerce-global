@@ -8,6 +8,7 @@
       "imagen": "https://www.ubuy.com.ar/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9zZW8vQ2Fub24tRU9TLTc3RC1EU0xSLUNhbWVyYS13aXRoLTE4LTEzNW1tLVVTTS1MZW5zXzQ1NDM5OTRlLTgxNzUtNDdiZC04MmE4LTMxYWU2MWI1YzI5YV8xLmNhMTRhN2FhMDg2MDk3OGE0MjdkZmVjOTFhMGZjYjRmLmpwZWc.jpg",
       "fav": true,
       "rating": 4,
+      "opinionesTotal": 29062,
       "categoria": "Electrónica"
     },
     {
@@ -18,6 +19,7 @@
       "precio": 499.99,
       "imagen": "https://i.ebayimg.com/images/g/XqQAAOSwZbJkAUnm/s-l400.jpg",
       "rating": 5,
+      "opinionesTotal": 3205,
       "categoria": "Electrónica"
     },
     {
@@ -29,6 +31,7 @@
       "imagen": "https://media.adeo.com/mkp/f4b88c2ef038685d2104cb876cbdb6e7/media.png?width=650&height=650&format=jpg&quality=80&fit=bounds",
       "fav": false,
       "rating": 4,
+      "opinionesTotal": 1500,
       "categoria": "Accesorios"
     },
     {
@@ -39,6 +42,7 @@
       "precio": 1299.99,
       "imagen": "https://www.asus.com/media/Odin/Websites/global/ProductLine/20200824120814.jpg",
       "rating": 5,
+      "opinionesTotal": 1200,
       "categoria": "Computadoras"
     },
     {
@@ -50,6 +54,7 @@
       "imagen": "https://cdn-xiaomi.waugi.com.ar/1235-thickbox_default/smart-watch-redmi-watch-2-lite-xiaomi-reloj-inteligente-negro.jpg",
       "fav": true,
       "rating": 4,
+      "opinionesTotal": 1500,
       "categoria": "Accesorios"
     },
     {
@@ -60,6 +65,7 @@
       "precio": 399.99,
       "imagen": "https://i0.wp.com/www.inovamusicnet.com/wp-content/uploads/2022/02/71MC6p5JQAL.AC_SL600_.jpg?fit=600%2C391&ssl=1",
       "rating": 3,
+      "opinionesTotal": 1200,
       "categoria": "Electrónica"
     },
     {
@@ -71,6 +77,7 @@
       "imagen": "https://www.jbl.com.ar/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw84362a29/JBL_CHARGE5_HERO_BLACK_0046_x1.png?sw=537&sfrm=png",
       "fav": false,
       "rating": 4,
+      "opinionesTotal": 800,
       "categoria": "Accesorios"
     },
     {
@@ -81,6 +88,7 @@
       "precio": 149.99,
       "imagen": "https://http2.mlstatic.com/D_NQ_NP_708620-MLA72982548112_112023-O.webp",
       "rating": 5,
+      "opinionesTotal": 3205,
       "categoria": "Computadoras"
     },
     {
@@ -92,6 +100,7 @@
       "imagen": "https://fullh4rd.com.ar/img/productos/18/monitor-28-samsung-ue590-ultra-hd-4k-1.jpg",
       "fav": true,
       "rating": 5,
+      "opinionesTotal": 500,
       "categoria": "Computadoras"
     },
     {
@@ -102,6 +111,7 @@
       "precio": 29.99,
       "imagen": "https://d2eebw31vcx88p.cloudfront.net/tiendashopealo/uploads/e79449b0021cce5f81ca917f6ea357a3f4818ec1.jpg",
       "rating": 3,
+      "opinionesTotal": 600,
       "categoria": "Accesorios"
     }
   ]
