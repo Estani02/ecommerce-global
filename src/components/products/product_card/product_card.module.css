@@ -127,13 +127,14 @@
   border: none;
   padding: 0.5rem 0;
   background: var(--primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   color: white;
   font-weight: 900;
   cursor: pointer;
 }
 
 .card .button_container .button:hover {
-  background: orangered;
+  background: var(--primary-foreground);
 }
 
 .card .button_container .buy_button {

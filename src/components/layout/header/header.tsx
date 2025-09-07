@@ -5,7 +5,7 @@ import style from "./header.module.css";
 
 export default function Header() {
   return (
-    <header className={style.header}>
+    <header className={`${style.header}`}>
       <Link className={style.logo} href="/">
         <p>Global Commerce</p>
       </Link>
