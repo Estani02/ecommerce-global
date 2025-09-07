@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import {ShoppingCart} from "lucide-react";
+import {ShoppingCart, Star} from "lucide-react";
 import Link from "next/link";
 
 import styles from "./product_card.module.css";
@@ -34,47 +34,15 @@ export default function ProductCard({product}: ProductCardProps) {
           <div className={styles.brand}>{product.marca}</div>
           <div className={styles.product_name}>{product.titulo}</div>
           <div className={styles.rating}>
-            <svg
-              className="svg four-star-svg"
-              viewBox="0 0 99.498 16.286"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9.357,1.558,11.282,5.45a.919.919,0,0,0,.692.5l4.3.624a.916.916,0,0,1,.509,1.564l-3.115,3.029a.916.916,0,0,0-.264.812l.735,4.278a.919.919,0,0,1-1.334.967l-3.85-2.02a.922.922,0,0,0-.855,0l-3.85,2.02a.919.919,0,0,1-1.334-.967l.735-4.278a.916.916,0,0,0-.264-.812L.279,8.14A.916.916,0,0,1,.789,6.576l4.3-.624a.919.919,0,0,0,.692-.5L7.71,1.558A.92.92,0,0,1,9.357,1.558Z"
-                fill="#fc0"
-                id="star-svgrepo-com"
-                transform="translate(-0.001 -1.047)"
+            {Array.from({length: 5}).map((_, index) => (
+              <Star
+                key={index}
+                className={`${
+                  index < product.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+                }`}
               />
-              <path
-                d="M9.357,1.558,11.282,5.45a.919.919,0,0,0,.692.5l4.3.624a.916.916,0,0,1,.509,1.564l-3.115,3.029a.916.916,0,0,0-.264.812l.735,4.278a.919.919,0,0,1-1.334.967l-3.85-2.02a.922.922,0,0,0-.855,0l-3.85,2.02a.919.919,0,0,1-1.334-.967l.735-4.278a.916.916,0,0,0-.264-.812L.279,8.14A.916.916,0,0,1,.789,6.576l4.3-.624a.919.919,0,0,0,.692-.5L7.71,1.558A.92.92,0,0,1,9.357,1.558Z"
-                data-name="star-svgrepo-com"
-                fill="#fc0"
-                id="star-svgrepo-com-2"
-                transform="translate(20.607 -1.047)"
-              />
-              <path
-                d="M9.357,1.558,11.282,5.45a.919.919,0,0,0,.692.5l4.3.624a.916.916,0,0,1,.509,1.564l-3.115,3.029a.916.916,0,0,0-.264.812l.735,4.278a.919.919,0,0,1-1.334.967l-3.85-2.02a.922.922,0,0,0-.855,0l-3.85,2.02a.919.919,0,0,1-1.334-.967l.735-4.278a.916.916,0,0,0-.264-.812L.279,8.14A.916.916,0,0,1,.789,6.576l4.3-.624a.919.919,0,0,0,.692-.5L7.71,1.558A.92.92,0,0,1,9.357,1.558Z"
-                data-name="star-svgrepo-com"
-                fill="#fc0"
-                id="star-svgrepo-com-3"
-                transform="translate(41.215 -1.047)"
-              />
-              <path
-                d="M9.357,1.558,11.282,5.45a.919.919,0,0,0,.692.5l4.3.624a.916.916,0,0,1,.509,1.564l-3.115,3.029a.916.916,0,0,0-.264.812l.735,4.278a.919.919,0,0,1-1.334.967l-3.85-2.02a.922.922,0,0,0-.855,0l-3.85,2.02a.919.919,0,0,1-1.334-.967l.735-4.278a.916.916,0,0,0-.264-.812L.279,8.14A.916.916,0,0,1,.789,6.576l4.3-.624a.919.919,0,0,0,.692-.5L7.71,1.558A.92.92,0,0,1,9.357,1.558Z"
-                data-name="star-svgrepo-com"
-                fill="#fc0"
-                id="star-svgrepo-com-4"
-                transform="translate(61.823 -1.047)"
-              />
-              <path
-                d="M9.357,1.558,11.282,5.45a.919.919,0,0,0,.692.5l4.3.624a.916.916,0,0,1,.509,1.564l-3.115,3.029a.916.916,0,0,0-.264.812l.735,4.278a.919.919,0,0,1-1.334.967l-3.85-2.02a.922.922,0,0,0-.855,0l-3.85,2.02a.919.919,0,0,1-1.334-.967l.735-4.278a.916.916,0,0,0-.264-.812L.279,8.14A.916.916,0,0,1,.789,6.576l4.3-.624a.919.919,0,0,0,.692-.5L7.71,1.558A.92.92,0,0,1,9.357,1.558Z"
-                data-name="star-svgrepo-com"
-                fill="#e9e9e9"
-                id="star-svgrepo-com-5"
-                transform="translate(82.431 -1.047)"
-              />
-            </svg>
-            (29,062)
+            ))}
+            ({product.opinionesTotal})
           </div>
         </div>
         <div className={styles.content_product_summary}>

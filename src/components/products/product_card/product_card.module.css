@@ -98,7 +98,8 @@
 }
 
 .card .content .rating svg {
-  height: 12px;
+  height: 14px;
+  width: 14px;
 }
 
 .card .content_product_summary {
