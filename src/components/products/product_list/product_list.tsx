@@ -5,10 +5,12 @@ import ProductSearch from "../product_search/product_search";
 
 import styles from "./product_list.module.css";
 
+import {useProductsStore} from "@/store/product.store";
 import {useProducts} from "@/hooks/useProducts";
 
 export default function ProductList() {
-  const {products, isLoading} = useProducts();
+  const {query} = useProductsStore();
+  const {products, isLoading} = useProducts(query);
 
   return (
     <div className="grid w-full max-w-[1300px] grid-cols-1 place-items-center justify-between gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
