@@ -55,6 +55,7 @@ export default function ProductCard({product, mutate}: ProductCardProps) {
         <BtnCart
           classNameContainer="w-[56px] grid rounded-t-[1.4rem] rounded-b-[0.7rem] place-items-center bg-primary text-white hover:bg-primary-foreground hover:text-white"
           product={product}
+          strokeWidth={2.5}
         />
       </div>
     </div>

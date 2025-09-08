@@ -12,9 +12,16 @@ interface BtnCartProps {
   classNameContainer?: ClassValue;
   sizeIcon?: number;
   text?: string;
+  strokeWidth?: number;
 }
 
-export default function BtnCart({product, classNameContainer, sizeIcon, text}: BtnCartProps) {
+export default function BtnCart({
+  product,
+  classNameContainer,
+  sizeIcon,
+  text,
+  strokeWidth,
+}: BtnCartProps) {
   const {addItem} = useCartStore();
 
   const handleAddToCart = () => {
@@ -38,7 +45,11 @@ export default function BtnCart({product, classNameContainer, sizeIcon, text}: B
       onClick={handleAddToCart}
     >
       {text && <span>{text}</span>}
-      <ShoppingCart className="inline-block" size={sizeIcon ? sizeIcon : 16} />
+      <ShoppingCart
+        className="inline-block"
+        size={sizeIcon ? sizeIcon : 16}
+        strokeWidth={strokeWidth}
+      />
       <Toaster
         position="bottom-right"
         toastOptions={{
