@@ -47,7 +47,9 @@ export async function PATCH(request: Request) {
     await writeProducts(products);
 
     return NextResponse.json(product);
-  } catch (_error) {
+  } catch (error) {
+    console.error(error);
+
     return NextResponse.json({error: "Error in request"}, {status: 400});
   }
 }
