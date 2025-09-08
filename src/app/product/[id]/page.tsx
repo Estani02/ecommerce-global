@@ -18,8 +18,8 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
   const product: Product = await getItem(params.id);
 
   return (
-    <main className="flex min-h-screen w-full items-center gap-16 p-4 pt-28 md:p-24 md:pt-28">
-      <section className="mx-auto flex w-full max-w-[1300px] flex-col gap-4 rounded-2xl bg-white p-8 shadow-lg">
+    <main className="flex min-h-screen w-full gap-16 p-4 pt-28 md:p-24 md:pt-28 lg:items-center">
+      <section className="mx-auto flex h-fit w-full max-w-[1300px] flex-col gap-4 rounded-2xl bg-white p-8 shadow-lg lg:h-auto">
         <div className="relative flex w-full items-center justify-between">
           <Link
             className="text-link hover:text-link-hover flex items-center gap-2 text-lg font-medium"
@@ -28,10 +28,31 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
             <ArrowLeft />
             <span>Volver al catálogo</span>
           </Link>
-          <BtnFav classNameContainer="!size-9" product={product} />
+          <BtnFav classNameContainer="!size-9 !top-0" product={product} />
         </div>
         <div className="divide-background flex w-full flex-col gap-8 divide-x divide-solid lg:flex-row">
-          <div className="h-[500px] flex-1">
+          <div className="flex-1 lg:h-[500px]">
+            <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between lg:hidden">
+              <h1 className="text-strong text-2xl font-bold">
+                {product?.titulo ?? "Producto no encontrado"}
+              </h1>
+              <div>
+                <div className="flex items-center gap-2">
+                  {Array.from({length: 5}).map((_, index) => (
+                    <Star
+                      key={index}
+                      className={`${
+                        index < product.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+                      }`}
+                      size={16}
+                    />
+                  ))}
+                </div>
+                <p className="text-weak mt-1 text-sm">
+                  Calificación {product?.rating} de 5. {product?.opinionesTotal} opiniones
+                </p>
+              </div>
+            </div>
             <div className="relative aspect-square h-full max-h-[300px] w-full overflow-hidden">
               {product?.imagen ? (
                 <Image
@@ -53,7 +74,7 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
                 </div>
               )}
             </div>
-            <div className="mt-6">
+            <div className="mt-6 hidden lg:block">
               <h4 className="text-stroke-weak text-2xl font-semibold">Descripción</h4>
               {product?.descripcion ? (
                 <p className="text-weak mt-2 text-lg">{product.descripcion}</p>
@@ -62,11 +83,11 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
               )}
             </div>
           </div>
-          <div className="flex h-[500px] flex-1 flex-col items-start gap-4">
-            <h1 className="text-strong text-4xl font-bold">
+          <div className="flex flex-1 flex-col items-start gap-4 lg:h-[500px]">
+            <h1 className="text-strong hidden text-4xl font-bold lg:block">
               {product?.titulo ?? "Producto no encontrado"}
             </h1>
-            <div>
+            <div className="hidden lg:block">
               <div className="flex items-center gap-2">
                 {Array.from({length: 5}).map((_, index) => (
                   <Star
@@ -102,6 +123,14 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
                   Tenés 30 días desde que lo recibís.
                 </span>
               </div>
+            </div>
+            <div className="mt-6 block lg:hidden">
+              <h4 className="text-stroke-weak text-2xl font-semibold">Descripción</h4>
+              {product?.descripcion ? (
+                <p className="text-weak mt-2 text-lg">{product.descripcion}</p>
+              ) : (
+                <p className="mt-2 text-lg text-gray-400 italic">Sin descripción</p>
+              )}
             </div>
             <div className="flex w-full flex-col gap-1.5 text-white">
               <button className="hover:bg-primary-foreground bg-primary w-full cursor-pointer rounded-md py-2 font-[900] transition-colors">
