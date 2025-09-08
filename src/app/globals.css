@@ -7,6 +7,10 @@
   --primary-foreground: #ff4500;
   --weak: #a6a6a6;
   --stroke-weak: #666666;
+  --strong: #0b0f23;
+  --link: #3483fa;
+  --link-hover: #2968c8;
+  --green: #00a650;
 }
 
 @theme inline {
@@ -14,6 +18,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-weak: var(--weak);
+  --color-stroke-weak: var(--stroke-weak);
+  --color-strong: var(--strong);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-green: var(--green);
 }
 
 /* @media (prefers-color-scheme: dark) {
