@@ -10,6 +10,7 @@ import BtnFav from "../btn_fav/btn_fav";
 import styles from "./product_card.module.css";
 
 import {Product} from "@/types/product";
+import {useCartStore} from "@/store/cart.store";
 
 interface ProductCardProps {
   product: Product;
@@ -17,6 +18,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({product, mutate}: ProductCardProps) {
+  const {addItem} = useCartStore();
+
   return (
     <div className={styles.card}>
       <Link href={`/product/${product.id}`}>
@@ -51,7 +54,19 @@ export default function ProductCard({product, mutate}: ProductCardProps) {
 
       <div className={styles.button_container}>
         <button className={`${styles.buy_button} ${styles.button}`}>Comprar ahora</button>
-        <button className={`${styles.cart_button} ${styles.button}`}>
+        <button
+          className={`${styles.cart_button} ${styles.button}`}
+          type="button"
+          onClick={() =>
+            addItem({
+              id: product.id,
+              name: product.titulo,
+              price: product.precio,
+              quantity: 1,
+              image: product.imagen,
+            })
+          }
+        >
           <ShoppingCart />
         </button>
       </div>
