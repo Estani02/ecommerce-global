@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import {persist} from "zustand/middleware";
 
 export interface CartItem {
   id: number;
@@ -17,37 +18,46 @@ interface CartState {
   updateQuantity: (id: number, quantity: number) => void;
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
-  items: [],
+export const useCartStore = create<CartState>()(
+  persist(
+    (set, get) => ({
+      items: [],
 
-  addItem: (item) => {
-    const items = get().items;
-    const existing = items.find((i) => i.id === item.id);
+      addItem: (item) => {
+        const items = get().items;
+        const existing = items.find((i) => i.id === item.id);
 
-    if (existing) {
-      set({
-        items: items.map((i) =>
-          i.id === item.id ? {...i, quantity: i.quantity + item.quantity} : i,
-        ),
-      });
-    } else {
-      set({items: [...items, item]});
-    }
-  },
+        if (existing) {
+          set({
+            items: items.map((i) =>
+              i.id === item.id ? {...i, quantity: i.quantity + item.quantity} : i,
+            ),
+          });
+        } else {
+          set({items: [...items, item]});
+        }
+      },
 
-  removeItem: (id) => {
-    set({items: get().items.filter((i) => i.id !== id)});
-  },
+      removeItem: (id) => {
+        set({items: get().items.filter((i) => i.id !== id)});
+      },
 
-  updateQuantity: (id: number, quantity: number) => {
-    set({
-      items: get().items.map((i) => (i.id === id ? {...i, quantity: Math.max(1, quantity)} : i)),
-    });
-  },
+      updateQuantity: (id: number, quantity: number) => {
+        set({
+          items: get().items.map((i) =>
+            i.id === id ? {...i, quantity: Math.max(1, quantity)} : i,
+          ),
+        });
+      },
 
-  clearCart: () => set({items: []}),
+      clearCart: () => set({items: []}),
 
-  total() {
-    return get().items.reduce((acc, i) => acc + i.price * i.quantity, 0);
-  },
-}));
+      total() {
+        return get().items.reduce((acc, i) => acc + i.price * i.quantity, 0);
+      },
+    }),
+    {
+      name: "cart-storage",
+    },
+  ),
+);
