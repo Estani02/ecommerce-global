@@ -37,7 +37,7 @@ export default function ProductList() {
             alt="404 Not Found"
             className="size-[246px]"
             height={56}
-            src="/404-error.svg"
+            src="/404-not-found.svg"
             width={56}
           />
           <div className="text-sm md:text-base">
