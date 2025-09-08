@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {ShoppingCart, Star} from "lucide-react";
 import Link from "next/link";
+import {KeyedMutator} from "swr";
 
 import styles from "./product_card.module.css";
 
@@ -10,7 +11,7 @@ import {Product} from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
-  mutate: () => void;
+  mutate: KeyedMutator<Product[]>;
 }
 
 export default function ProductCard({product, mutate}: ProductCardProps) {
@@ -79,7 +80,7 @@ export default function ProductCard({product, mutate}: ProductCardProps) {
       </Link>
 
       <div className={styles.button_container}>
-        <button className={`${styles.buy_button} ${styles.button}`}>Buy Now</button>
+        <button className={`${styles.buy_button} ${styles.button}`}>Comprar ahora</button>
         <button className={`${styles.cart_button} ${styles.button}`}>
           <ShoppingCart />
         </button>
