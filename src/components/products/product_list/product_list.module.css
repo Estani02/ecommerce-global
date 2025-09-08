@@ -4,7 +4,7 @@
   height: 346px;
   border-radius: 1rem;
   padding: 0.3rem;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 50px 30px -20px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 50px 30px -20px; */
 }
 
 .skeleton_block {
