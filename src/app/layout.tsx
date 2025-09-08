@@ -4,7 +4,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import {unstable_ViewTransition as ViewTransition} from "react";
 
 import "./globals.css";
-import Header from "@/components/layout/header/header";
+import Header from "@/components/layout/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
