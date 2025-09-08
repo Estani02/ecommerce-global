@@ -2,6 +2,8 @@
 "use client";
 
 import Image from "next/image";
+import {Heart} from "lucide-react";
+import {useState} from "react";
 
 import ProductCard from "../product_card/product_card";
 import ProductSearch from "../product_search/product_search";
@@ -12,17 +14,26 @@ import {useProductsStore} from "@/store/product.store";
 import {useProducts} from "@/hooks/useProducts";
 
 export default function ProductList() {
+  const [fav, setFav] = useState(false);
   const {query} = useProductsStore();
-  const {products, isLoading, mutate} = useProducts(query);
+  const {products, isLoading, mutate} = useProducts(query + (fav ? "&fav=true" : ""));
 
   return (
     <div className="grid w-full max-w-[1300px] grid-cols-1 place-items-center justify-between gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       <div className="col-span-full mb-4 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <ProductSearch />
+        {/* <button
+            className="border-weak cursor-pointer rounded-lg border p-2.5 text-sm"
+            title="Filtrar favoritos"
+            type="button"
+            onClick={() => setFav(!fav)}
+          >
+            <Heart fill={fav ? "#ff5f5f" : "#a8a8a8"} size={16} />
+          </button> */}
         {isLoading ? (
           <div className={`${styles.skeleton_block} pulsate`} />
         ) : (
-          <p className="text-center text-lg font-semibold whitespace-nowrap md:text-left md:text-base md:font-normal">
+          <p className="min-w-[200px] text-center text-lg font-semibold whitespace-nowrap md:text-left md:text-base md:font-normal">
             {products?.length} productos encontrados
           </p>
         )}

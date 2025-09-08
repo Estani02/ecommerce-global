@@ -7,16 +7,22 @@ export async function GET(req: Request) {
   try {
     const {searchParams} = new URL(req.url);
     const query = searchParams.get("search")?.toLowerCase();
+    const favParam = searchParams.get("fav");
 
     const products = await readProducts();
 
-    if (!query) {
-      return NextResponse.json(products);
+    let filtered = products;
+
+    if (query) {
+      filtered = filtered.filter(
+        (p: Product) =>
+          p.titulo.toLowerCase().includes(query) || p.marca.toLowerCase().includes(query),
+      );
     }
 
-    const filtered = products.filter((p: Product) => {
-      return p.titulo.toLowerCase().includes(query) || p.marca.toLowerCase().includes(query);
-    });
+    if (favParam === "true") {
+      filtered = filtered.filter((p: Product) => p.fav === true);
+    }
 
     return NextResponse.json(filtered);
   } catch (_error) {
