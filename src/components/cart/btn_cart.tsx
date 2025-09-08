@@ -1,0 +1,57 @@
+"use client";
+import {ShoppingCart} from "lucide-react";
+import toast, {Toaster} from "react-hot-toast";
+import {type ClassValue} from "clsx";
+
+import {useCartStore} from "@/store/cart.store";
+import {Product} from "@/types/product";
+import {cn} from "@/lib/utils";
+
+interface BtnCartProps {
+  product: Product;
+  classNameContainer?: ClassValue;
+  sizeIcon?: number;
+  text?: string;
+}
+
+export default function BtnCart({product, classNameContainer, sizeIcon, text}: BtnCartProps) {
+  const {addItem} = useCartStore();
+
+  const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      name: product.titulo,
+      price: product.precio,
+      quantity: 1,
+      image: product.imagen,
+    });
+    toast.success("Producto agregado al carrito");
+  };
+
+  return (
+    <button
+      className={cn(
+        "hover:border-primary-foreground hover:text-primary-foreground text-primary border-primary flex cursor-pointer items-center justify-center gap-2 rounded-md border border-solid py-2 font-[900] transition-colors",
+        classNameContainer,
+      )}
+      type="button"
+      onClick={handleAddToCart}
+    >
+      {text && <span>{text}</span>}
+      <ShoppingCart className="inline-block" size={sizeIcon ? sizeIcon : 16} />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            boxShadow: "none",
+            borderRadius: "0.7rem",
+            border: "1px solid #e0e0e0",
+            background: "#ffff",
+            color: "#0b0f23",
+            fontWeight: "600",
+          },
+        }}
+      />
+    </button>
+  );
+}
