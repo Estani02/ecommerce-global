@@ -2,6 +2,7 @@
 import Link from "next/link";
 import {ShoppingCart} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
+import Image from "next/image";
 
 import CartDropdown from "../cart/cart_dropdown";
 
@@ -24,7 +25,7 @@ export default function Header() {
   return (
     <header className="text-stroke bg-background/90 supports-[backdrop-filter]:bg-background/60 border-weak fixed z-40 flex h-[80px] w-full items-center justify-between border-b px-8 backdrop-blur">
       <Link href="/">
-        <p>Global Commerce</p>
+        <Image alt="Logo" height={40} src="/logo.png" width={120} />
       </Link>
       <div ref={cartRef} className="relative">
         <button
