@@ -22,7 +22,9 @@ export default function ProductList() {
         {isLoading ? (
           <div className={`${styles.skeleton_block} pulsate`} />
         ) : (
-          <p className="whitespace-nowrap">{products?.length} productos encontrados</p>
+          <p className="text-center text-lg font-semibold whitespace-nowrap md:text-left md:text-base md:font-normal">
+            {products?.length} productos encontrados
+          </p>
         )}
       </div>
       {isLoading ? (
