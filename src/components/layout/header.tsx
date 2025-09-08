@@ -3,7 +3,7 @@ import Link from "next/link";
 import {ShoppingCart} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 
-import CartDropdown from "../cart_dropdown";
+import CartDropdown from "../cart/cart_dropdown";
 
 export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);

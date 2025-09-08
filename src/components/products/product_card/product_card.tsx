@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import {ShoppingCart, Star} from "lucide-react";
+import {Star} from "lucide-react";
 import Link from "next/link";
 import {KeyedMutator} from "swr";
 
@@ -10,7 +10,7 @@ import BtnFav from "../btn_fav/btn_fav";
 import styles from "./product_card.module.css";
 
 import {Product} from "@/types/product";
-import {useCartStore} from "@/store/cart.store";
+import BtnCart from "@/components/cart/btn_cart";
 
 interface ProductCardProps {
   product: Product;
@@ -18,8 +18,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({product, mutate}: ProductCardProps) {
-  const {addItem} = useCartStore();
-
   return (
     <div className={styles.card}>
       <Link href={`/product/${product.id}`}>
@@ -54,21 +52,10 @@ export default function ProductCard({product, mutate}: ProductCardProps) {
 
       <div className={styles.button_container}>
         <button className={`${styles.buy_button} ${styles.button}`}>Comprar ahora</button>
-        <button
-          className={`${styles.cart_button} ${styles.button}`}
-          type="button"
-          onClick={() =>
-            addItem({
-              id: product.id,
-              name: product.titulo,
-              price: product.precio,
-              quantity: 1,
-              image: product.imagen,
-            })
-          }
-        >
-          <ShoppingCart />
-        </button>
+        <BtnCart
+          classNameContainer="w-[56px] grid rounded-t-[1.4rem] rounded-b-[0.7rem] place-items-center bg-primary text-white hover:bg-primary-foreground hover:text-white"
+          product={product}
+        />
       </div>
     </div>
   );

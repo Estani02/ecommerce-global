@@ -1,10 +1,11 @@
-import {ArrowLeft, RefreshCcw, ShoppingCart, Star} from "lucide-react";
+import {ArrowLeft, RefreshCcw, Star} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import {Product} from "@/types/product";
 import BtnFav from "@/components/products/btn_fav/btn_fav";
 import {API_URL} from "@/lib/const";
+import BtnCart from "@/components/cart/btn_cart";
 
 export default async function ProductByIdPage({params}: {params: {id: string}}) {
   const getItem = async (id: string) => {
@@ -22,10 +23,10 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
       <section className="mx-auto flex h-fit w-full max-w-[1300px] flex-col gap-4 rounded-2xl bg-white p-8 shadow-lg lg:h-auto">
         <div className="relative flex w-full items-center justify-between">
           <Link
-            className="text-link hover:text-link-hover flex items-center gap-2 text-lg font-medium"
+            className="text-link hover:text-link-hover flex items-center gap-2 font-medium"
             href="/"
           >
-            <ArrowLeft />
+            <ArrowLeft size={16} />
             <span>Volver al catálogo</span>
           </Link>
           <BtnFav classNameContainer="!size-9 !top-0" product={product} />
@@ -136,10 +137,7 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
               <button className="hover:bg-primary-foreground bg-primary w-full cursor-pointer rounded-md py-2 font-[900] transition-colors">
                 Comprar ahora
               </button>
-              <button className="hover:border-primary-foreground hover:text-primary-foreground text-primary border-primary w-full cursor-pointer rounded-md border border-solid py-2 font-[900] transition-colors">
-                Agregar al carrito
-                <ShoppingCart className="ml-2 inline-block" size={16} />
-              </button>
+              <BtnCart product={product} sizeIcon={20} text="Agregar al carrito" />
             </div>
           </div>
         </div>

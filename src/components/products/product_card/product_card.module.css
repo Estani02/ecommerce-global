@@ -114,18 +114,3 @@
 .card .button_container .buy_button {
   flex: auto;
 }
-
-.card .button_container .cart_button {
-  display: grid;
-  place-content: center;
-  width: 50px;
-}
-
-.card .button_container .cart_button svg {
-  width: 15px;
-  fill: white;
-}
-
-.card:hover {
-  transform: scale(1.03);
-}
