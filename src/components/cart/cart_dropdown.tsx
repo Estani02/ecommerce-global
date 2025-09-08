@@ -18,7 +18,7 @@ export default function CartDropdown({isOpen, onClose}: CartDropdownProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-full right-0 z-50 mt-2 w-96">
+    <div className="absolute top-full right-0 z-50 mt-2 w-[250px] sm:w-96">
       <div className="border-weak bg-background rounded-[1.7rem] border p-4 shadow-lg">
         <div className="border-weak mb-4 flex items-center justify-between border-b">
           <h3 className="text-strong text-lg font-semibold">Mi carrito</h3>
@@ -56,7 +56,7 @@ export default function CartDropdown({isOpen, onClose}: CartDropdownProps) {
           <>
             <div className="max-h-96 space-y-4 overflow-y-auto">
               {items.map((item) => (
-                <div key={item.id} className="flex items-center gap-3 rounded-lg border p-2">
+                <div key={item.id} className="flex items-center gap-3 rounded-lg p-2 sm:border">
                   <Image
                     alt={item.name}
                     className="rounded object-cover"
