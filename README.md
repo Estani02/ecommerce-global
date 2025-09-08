@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+# 🛍️ Ecommerce Global
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Cómo correr el proyecto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Instalar dependencias:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   pnpm install
+   ```
+2. Levantar el servidor de desarrollo:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   pnpm dev
+   ```
+3. El proyecto estará disponible en:
+   [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+🔗 Deploy: [ecommerce-global.vercel.app](https://ecommerce-global.vercel.app)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Descripción del proyecto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Aplicación de listado de productos desarrollada con **Next.js** que combina distintas tecnologías modernas de frontend:
 
-## Deploy on Vercel
+* **Estilos**: uso combinado de **CSS Modules** y **TailwindCSS**.
+* **Estado global**: gestionado con **Zustand** (para carrito y query de búsqueda).
+* **Manejo de peticiones HTTP**: implementado con **SWR** y hooks personalizados.
+* **Tipado**: interfaces definidas en cada componente que recibe props, además de una interfaz general `Product` para estandarizar la data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ API simulada
+
+El enunciado pedía simular una base de datos con un JSON, pero se aprovechó la potencia de Next.js para implementar una API interna simple:
+
+* **GET `/api/products?search=query`** → filtra productos por nombre o marca.
+* **PATCH `/api/products`** → actualiza el estado de un producto (ejemplo: marcar o desmarcar como favorito). El `id` se envía en el body.
+
+---
+
+## 📦 Cliente
+
+* Las peticiones a la API se manejan con **SWR**.
+* Se crearon **hooks personalizados** para abstraer el consumo de datos y facilitar la reutilización.
+* El estado de la búsqueda y del carrito se controla con **Zustand**.
+
+---
