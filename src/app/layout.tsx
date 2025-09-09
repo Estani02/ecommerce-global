@@ -5,6 +5,7 @@ import {unstable_ViewTransition as ViewTransition} from "react";
 
 import "./globals.css";
 import Header from "@/components/layout/header";
+import ExperienceDialog from "@/components/ExperienceDialog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
         <ViewTransition name="page">{children}</ViewTransition>
+        <ExperienceDialog />
       </body>
     </html>
   );
