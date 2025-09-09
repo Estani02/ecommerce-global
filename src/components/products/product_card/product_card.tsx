@@ -42,7 +42,7 @@ export default function ProductCard({product, mutate}: ProductCardProps) {
                 }`}
               />
             ))}
-            ({product.opinionesTotal})
+            ({product?.opiniones_total})
           </div>
         </div>
         <div className={styles.content_product_summary}>

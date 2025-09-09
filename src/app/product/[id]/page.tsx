@@ -50,7 +50,7 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
                   ))}
                 </div>
                 <p className="text-weak mt-1 text-sm">
-                  Calificación {product?.rating} de 5. {product?.opinionesTotal} opiniones
+                  Calificación {product?.rating} de 5. {product?.opiniones_total} opiniones
                 </p>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
                 ))}
               </div>
               <p className="text-weak mt-1 text-sm">
-                Calificación {product?.rating} de 5. {product?.opinionesTotal} opiniones
+                Calificación {product?.rating} de 5. {product?.opiniones_total} opiniones
               </p>
             </div>
             <span className="text-strong text-4xl">${product?.precio}</span>
