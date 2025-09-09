@@ -16,6 +16,7 @@ export default function ExperienceDialog() {
       const timer = setTimeout(() => {
         setOpen(true);
         localStorage.setItem("experience-dialog-shown", "true");
+        // }, 5); // test
       }, 120000); // 2 minutos después de entrar
 
       return () => clearTimeout(timer);
@@ -41,10 +42,10 @@ export default function ExperienceDialog() {
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="fixed inset-0 z-[999999] bg-black/50" />
         <AlertDialog.Content className="fixed top-1/2 left-1/2 z-[9999999] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-6 shadow-lg">
-          <AlertDialog.Title className="text-xl font-semibold">
+          <AlertDialog.Title className="text-strong text-xl font-semibold">
             ¿Cómo está siendo tu experiencia?
           </AlertDialog.Title>
-          <AlertDialog.Description className="mt-2 text-gray-600">
+          <AlertDialog.Description className="text-stroke-weak mt-2">
             Ayudame calificando tu experiencia hasta ahora:
           </AlertDialog.Description>
 
@@ -63,7 +64,7 @@ export default function ExperienceDialog() {
           <div className="mt-6 flex justify-end space-x-2">
             <AlertDialog.Cancel asChild>
               <button
-                className="rounded-lg border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100"
+                className="w-[100px] rounded-lg border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100"
                 onClick={() => setOpen(false)}
               >
                 Cancelar
@@ -71,7 +72,7 @@ export default function ExperienceDialog() {
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <button
-                className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+                className="w-[100px] rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
                 disabled={!rating}
                 onClick={handleSubmit}
               >
