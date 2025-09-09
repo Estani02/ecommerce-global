@@ -1,55 +1,38 @@
 import {NextResponse} from "next/server";
 
 import {Product} from "@/types/product";
-import {readProducts, writeProducts} from "@/lib/products";
+import {createClient} from "@/supabase/server";
 
 export async function GET(req: Request) {
-  try {
-    const {searchParams} = new URL(req.url);
-    const query = searchParams.get("search")?.toLowerCase();
-    const favParam = searchParams.get("fav");
+  const supabase = await createClient();
 
-    const products = await readProducts();
+  const {searchParams} = new URL(req.url);
+  const query = searchParams.get("search")?.toLowerCase();
+  const favParam = searchParams.get("fav");
 
-    let filtered = products;
+  const {data: products, error} = await supabase
+    .from("products")
+    .select("*")
+    .order("titulo", {ascending: true});
 
-    if (query) {
-      filtered = filtered.filter(
-        (p: Product) =>
-          p.titulo.toLowerCase().includes(query) || p.marca.toLowerCase().includes(query),
-      );
-    }
-
-    if (favParam === "true") {
-      filtered = filtered.filter((p: Product) => p.fav === true);
-    }
-
-    return NextResponse.json(filtered);
-  } catch (_error) {
-    return NextResponse.json({message: "Error leyendo productos"}, {status: 500});
-  }
-}
-
-export async function PATCH(request: Request) {
-  try {
-    const {id, fav} = await request.json();
-
-    if (typeof id !== "number" || typeof fav !== "boolean") {
-      return NextResponse.json({error: "Invalid data"}, {status: 400});
-    }
-    const products = await readProducts();
-    const product = products.find((p: Product) => p.id === id);
-
-    if (!product) {
-      return NextResponse.json({error: "Product not found"}, {status: 404});
-    }
-    product.fav = fav;
-    await writeProducts(products);
-
-    return NextResponse.json(product);
-  } catch (error) {
+  if (error) {
     console.error(error);
 
-    return NextResponse.json({error: "Error in request"}, {status: 400});
+    return NextResponse.json({error: error.message, code: error.code}, {status: 500});
   }
+
+  let filtered = products;
+
+  if (query) {
+    filtered = filtered.filter(
+      (p: Product) =>
+        p.titulo.toLowerCase().includes(query) || p.marca.toLowerCase().includes(query),
+    );
+  }
+
+  if (favParam === "true") {
+    filtered = filtered.filter((p: Product) => p.fav === true);
+  }
+
+  return NextResponse.json(filtered);
 }
