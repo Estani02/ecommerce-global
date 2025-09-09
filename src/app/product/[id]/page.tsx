@@ -31,7 +31,7 @@ export default async function ProductByIdPage({params}: {params: {id: string}}) 
           </Link>
           <BtnFav classNameContainer="!size-9 !top-0" product={product} />
         </div>
-        <div className="divide-background flex w-full flex-col gap-8 divide-x divide-solid lg:flex-row">
+        <div className="divide-background flex w-full flex-col gap-8 divide-solid lg:flex-row lg:divide-x">
           <div className="flex-1 lg:h-[500px]">
             <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between lg:hidden">
               <h1 className="text-strong text-2xl font-bold">

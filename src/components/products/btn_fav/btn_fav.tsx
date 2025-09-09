@@ -8,6 +8,7 @@ import styles from "./btn_fav.module.css";
 
 import {Product} from "@/types/product";
 import {cn} from "@/lib/utils";
+import {useProductsStore} from "@/store/product.store";
 
 interface ProductCardProps {
   product: Product;
@@ -19,8 +20,13 @@ interface ProductCardProps {
 export default function BtnFav({product, mutate, classNameContainer, refresh}: ProductCardProps) {
   const router = useRouter();
   const [optimisticFav, setOptimisticFav] = useState<boolean | undefined>(undefined);
+  const {setMomentaryFilters, momentaryFilters} = useProductsStore();
 
   const handleFavoriteToggle = async () => {
+    if (momentaryFilters && momentaryFilters.includes(product.id)) {
+      setMomentaryFilters(momentaryFilters.filter((id) => id !== product.id));
+    }
+
     if (mutate) {
       mutate(
         async (products: Product[] = []) => {
