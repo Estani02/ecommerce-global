@@ -114,3 +114,7 @@
 .card .button_container .buy_button {
   flex: auto;
 }
+
+.card:hover {
+  transform: scale(1.03);
+}
