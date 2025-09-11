@@ -50,19 +50,6 @@ export default function BtnCart({
         size={sizeIcon ? sizeIcon : 16}
         strokeWidth={strokeWidth}
       />
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            boxShadow: "none",
-            borderRadius: "0.7rem",
-            border: "1px solid #e0e0e0",
-            background: "#ffff",
-            color: "#0b0f23",
-            fontWeight: "600",
-          },
-        }}
-      />
     </button>
   );
 }
