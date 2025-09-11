@@ -1,6 +1,6 @@
 "use client";
 import {ShoppingCart} from "lucide-react";
-import toast, {Toaster} from "react-hot-toast";
+import toast from "react-hot-toast";
 import {type ClassValue} from "clsx";
 
 import {useCartStore} from "@/store/cart.store";
